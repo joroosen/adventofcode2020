@@ -1,3 +1,5 @@
+import re
+
 colorsToCheck = ["shiny gold"]
 colorsHoldingSG = []
 
@@ -15,16 +17,12 @@ while len(colorsToCheck) != 0:
                     colorsHoldingSG.append(colorToHold)
         colorsToCheck.remove(color)
 
-print("part 1: " + str(len(colorsHoldingSG)))
-
-#/////////////////////////////
-import re
+print("Day 7 part 1: " + str(len(colorsHoldingSG)))
 
 def hasNumbers(inputString):
     return bool(re.search(r'\d', inputString))
 
 colorsToCheck = [["shiny gold",1]]
-colorsHoldingSG = []
 totals = 0
 
 with open("7_input.txt", "r") as f:
@@ -39,8 +37,7 @@ while len(colorsToCheck) != 0:
                     pattern = "(\d+ )(.*?) bag"
                     m = re.findall(pattern, teststring)
                     for a in m:
-                        colorsToCheck2 = dict(colorsToCheck)
-                        if a[1] not in colorsToCheck2:
+                        if a[1] not in colorsToCheck:
                             temp = [a[1], color[1] * int(a[0])]
                             colorsToCheck.append(temp)
                         else:
@@ -49,4 +46,4 @@ while len(colorsToCheck) != 0:
                                     colorsToCheck[i][1] = colorsToCheck[i][1] + int(a[0])
                         totals = totals + (color[1] * int(a[0]))
         colorsToCheck.remove(color)
-print("totals part 2: " + str(totals))
+print("Day 7 part 2: " + str(totals))
