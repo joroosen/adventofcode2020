@@ -25,9 +25,6 @@ def hasNumbers(inputString):
 colorsToCheck = [["shiny gold",1]]
 totals = 0
 
-with open("7_input.txt", "r") as f:
-    inputData = f.readlines()
-
 while len(colorsToCheck) != 0:
     for color in colorsToCheck:
         for line in inputData:
