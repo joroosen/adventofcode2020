@@ -1,6 +1,10 @@
 import linecache
 
 changedLines = []
+accNumber = 0
+lineNumber = 1
+alreadychecked = []
+line = linecache.getline("8_input.txt", lineNumber-1)
 
 
 def setInputdata(init):
@@ -10,30 +14,18 @@ def setInputdata(init):
             for num, line1 in enumerate(inputdata, 1):
                 if num not in changedLines:
                     if line1.startswith("jmp"):
-                        print(inputdata[num - 1])
-                        print("Veranderen naar: ")
                         inputdata[num-1] = "nop" + line1[3:]
-                        print(inputdata[num - 1])
                         changedLines.append(num)
                         break
                     elif line1.startswith("nop"):
-                        print(inputdata[num - 1])
-                        print("Veranderen naar: ")
                         inputdata[num-1] = "jmp" + line1[3:]
-                        print(inputdata[num-1])
                         changedLines.append(num)
                         break
         return inputdata
 
 
+# fill input data for init
 inputData = setInputdata(0)
-
-
-accNumber = 0
-lineNumber = 1
-line = linecache.getline("8_input.txt", lineNumber-1)
-
-alreadychecked = []
 
 
 while lineNumber <= len(inputData):
@@ -53,7 +45,5 @@ while lineNumber <= len(inputData):
         elif line.startswith("jmp"):
             lineNumber = lineNumber + int(line.partition(" ")[2])
 
-    # print(line)
 
-
-print(accNumber)
+print("Result for day 8, part 2: " + str(accNumber))
