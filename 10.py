@@ -44,7 +44,6 @@ for r in range(len(numbers_to_remove) + 1):
     combinations_list = list(itertools.combinations(numbers_to_remove, r))
     all_combinations += combinations_list
 
-
 final_list = []
 
 for a in all_combinations:
