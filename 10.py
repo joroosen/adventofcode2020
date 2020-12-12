@@ -29,17 +29,18 @@ print("Result day 10 part 1: " + str(results[1] * results[3]))
 
 # keep an array of numbers that we can miss
 numbers_to_remove = []
-
+print(sorted_list)
 # go over the list and fetch the current AND previouse number
 for previous, current, next_plus2 in zip(sorted_list, sorted_list[1:], sorted_list[2:]):
     if next_plus2 - previous < 3:
         numbers_to_remove.append(current)
 
+
 failed_combinations = False
 number_of_combinations = 0
 all_combinations = []
 
-
+# print(len(numbers_to_remove))
 for r in range(len(numbers_to_remove) + 1):
     combinations_list = list(itertools.combinations(numbers_to_remove, r))
     all_combinations += combinations_list
@@ -62,3 +63,23 @@ for a in all_combinations:
     failed_combinations = False
 
 print("Result day 10 part 2: " + str(number_of_combinations))
+
+combinatins = 1
+aftrekken = 0
+vorige_aftrekken = 0
+# for previous_min2, previous_min1, current in zip(sorted_list[:3], sorted_list[1:3], sorted_list[2:3]):
+#     if current - previous_min2 < 3:
+#         combinatins = combinatins * 2
+#
+# for previous_min3, previous_min2, previous_min1, current in zip(sorted_list, sorted_list[1:], sorted_list[2:], sorted_list[3:]):
+#     if current - previous_min2 < 3:
+#         combinatins = combinatins * 2
+#         aftrekken = pow(aftrekken,
+#     # if current - previous_min3 < 3:
+#     #     aftrekken += 1
+#
+#
+#
+# print("combinations: " + str(combinatins))
+
+print(str(pow(2,3)))
