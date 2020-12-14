@@ -3,7 +3,6 @@ import itertools
 with open("14_input.txt") as f:
     mylist = f.read().splitlines()
 
-
 mask = ""
 results = {}
 
@@ -25,7 +24,6 @@ for a in mylist:
         binary_input = int(a.split(" = ", 1)[1])
         binary_input = convert_value(binary_input)
         results[a[a.find("[") + 1:a.find("]")]] = int(binary_input)
-
 
 print("Day 14 - Part 1: " + str(sum(results.values())))
 
@@ -63,9 +61,8 @@ for a in mylist:
     if a.startswith("mask"):
         mask = a.split(" = ", 1)[1]
     else:
-        binary_input = int(a.split(" = ", 1)[1])
         location = int(a[a.find("[") + 1:a.find("]")])
-        original_value = binary_input
+        original_value = int(a.split(" = ", 1)[1])
         bin_location = convert_value_part2(location)
         if "X" in bin_location:
             number_of_x_chars = bin_location.count("X")
@@ -84,6 +81,5 @@ for a in mylist:
 
         else:
             results_part2[a[a.find("[") + 1:a.find("]")]] = original_value
-
 
 print("Day 14 - Part 2: " + str(sum(results_part2.values())))
